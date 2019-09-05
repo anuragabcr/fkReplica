@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  searchForm = this.fb.group({
+    search: ['', [Validators.required]]
+  });
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
   }

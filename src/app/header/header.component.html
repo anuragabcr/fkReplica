@@ -1,1 +1,61 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">fkReplica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="phoneDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Phones
+                </a>
+                <div class="dropdown-menu" aria-labelledby="phoneDropdown">
+                    <a class="dropdown-item" href="#">Phone</a>
+                    <hr>
+                    <a class="dropdown-item" href="#">iPhone</a>
+                    <a class="dropdown-item" href="#">Pixel</a>
+                    <a class="dropdown-item" href="#">Samsung</a>
+                    <a class="dropdown-item" href="#">Lenovo</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="laptopDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Laptops
+                </a>
+                <div class="dropdown-menu" aria-labelledby="laptopDropdown">
+                    <a class="dropdown-item" href="#">Laptop</a>
+                    <hr>
+                    <a class="dropdown-item" href="#">Mac</a>
+                    <a class="dropdown-item" href="#">Pixel Bool</a>
+                    <a class="dropdown-item" href="#">MSI</a>
+                    <a class="dropdown-item" href="#">Lenovo</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
+            <input class="form-control mr-sm-2" type="search" formControlName="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        </form>&nbsp;
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#loginModal">
+            Login
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <app-login></app-login>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
