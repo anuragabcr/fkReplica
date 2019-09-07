@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="phoneDropdown" role="button" data-toggle="dropdown"
@@ -18,10 +18,11 @@
                 <div class="dropdown-menu" aria-labelledby="phoneDropdown">
                     <a class="dropdown-item" href="#">Phone</a>
                     <hr>
-                    <a class="dropdown-item" href="#">iPhone</a>
-                    <a class="dropdown-item" href="#">Pixel</a>
-                    <a class="dropdown-item" href="#">Samsung</a>
-                    <a class="dropdown-item" href="#">Lenovo</a>
+                    <a class="dropdown-item" [routerLink]="['/home','iphones']">iPhone</a>
+                    <a class="dropdown-item" [routerLink]="['/home','pixels']">Pixel</a>
+                    <a class="dropdown-item" [routerLink]="['/home','samsungs']">Samsung</a>
+                    <a class="dropdown-item" [routerLink]="['/home','lenovos']">Lenovo</a>
+                    <a class="dropdown-item" [routerLink]="['/home','xiaomis']">Xiaomi</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

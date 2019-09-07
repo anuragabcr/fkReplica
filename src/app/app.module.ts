@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { IndexService } from './services/index.service';
+import { ProductsService } from './services/products.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +33,8 @@ import { ProductsComponent } from './products/products.component';
     HttpClientModule
   ],
   providers: [
-    IndexService
+    IndexService,
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })
