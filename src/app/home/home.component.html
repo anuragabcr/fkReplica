@@ -1,1 +1,20 @@
 <app-carousel></app-carousel>
+<br>
+<div class="container" *ngFor="let title of titles;let i=index">
+    <hr>
+    <div style="background-color: #eef3e9;align-content: center;" >
+        <h4><strong><span style="color:#f08a87;"> {{title}}</span></strong></h4>
+        
+    </div>
+    <div class="row">
+        <div class="col-sm pad" *ngFor="let item of phones[i+1]">
+            <div class="card" style="width: 12rem;border: none;" >
+                <img class="img" src="{{item.image_1}}" alt="{{item.name}}">
+                <div class="card-body" style="align-content: center">
+                    <h5 class="card-body">{{item.name}}</h5>
+                    <p><i>{{item.price}}</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

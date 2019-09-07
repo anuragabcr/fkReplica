@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IndexService } from '../services/index.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  phones;
+  titles = ['Deal of the Day', 'Hot Deals', 'Top Selection'];
+
+  constructor(private indexService: IndexService) { }
 
   ngOnInit() {
+    this.indexService.getSlide()
+      .subscribe(phone => {
+        this.phones = phone;
+      });
   }
 
 }
