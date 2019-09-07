@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IndexService } from '../services/index.service';
 
 @Component({
   selector: 'app-carousel',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  constructor() { }
+  slides;
+
+  constructor(private indexService: IndexService) { }
 
   ngOnInit() {
+    this.indexService.getSlide()
+      .subscribe(slide => {
+        console.log(slide);
+        this.slides = slide[0];
+      });
   }
 
 }
