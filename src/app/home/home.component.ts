@@ -20,4 +20,10 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  snackBar() {
+    const x = document.getElementById('snackbar');
+    x.className = 'show';
+    setTimeout(() => { x.className = x.className.replace('show', ''); }, 3000);
+  }
+
 }

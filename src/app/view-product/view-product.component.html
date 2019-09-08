@@ -4,11 +4,27 @@
         <img class="img-size" src="{{phone.image_1}}" (click)="selectedImage=phone.image_1" alt="{{phone.name}}">
         <img class="img-size" src="{{phone.image_2}}" (click)="selectedImage=phone.image_2" alt="{{phone.name}}">
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4" style="align-content: center;">
         <img style="padding-left: 20px;" src="{{selectedImage}}" alt="{{phone.name}}">
+        <div class="btn-grroup mx-auto">&nbsp;&nbsp;<br>
+            <button class="btn btn-primary" (click)="snackBar()">Add to cart</button>&nbsp;&nbsp;
+            <div id="snackbar">Added to cart</div>
+            <button class="btn btn-success">Buy</button>
+        </div>
     </div>
-    <div class="col-sm-offset-1 col-sm-7">
+    <div class="col-sm-offset-1 col-sm-6">
         <h4>{{phone.name}}</h4>
         <h5>{{phone.price}}</h5>
+        <strong>Highlights</strong>
+        <hr>
+        <ul *ngFor="let item of phone.highlight">
+            <li>{{item}}</li>
+        </ul>
+        <strong>Generals</strong>
+        <hr>
+        {{phone.General}}
+        <!-- <ul *ngFor="let item of phone.General">
+            <li>{{item}}</li>
+        </ul> -->
     </div>
 </div></div>

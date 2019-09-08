@@ -6,8 +6,18 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">{{phone.name}}</h5>
-                <h4 class="card-title">Rs {{phone.price}}</h4>
+                <h4 class="card-title">{{phone.name}}</h4>
+                <h5 class="card-title">Rs {{phone.price}}</h5>
+                <strong>Highlights</strong>
+                <hr>
+                <ul *ngFor="let item of phone.highlight">
+                    <li>{{item}}</li>
+                </ul>
+                <div class="btn-grroup">
+                    <button class="btn btn-primary" (click)="snackBar()">Add to cart</button>&nbsp;&nbsp;&nbsp;
+                    <div id="snackbar">Added to cart</div>
+                    <button class="btn btn-success" [routerLink]="['/home',products,phone._id]">View</button>
+                </div>
             </div>
         </div>
     </div>
