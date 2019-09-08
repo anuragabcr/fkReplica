@@ -13,6 +13,9 @@ export class ViewProductComponent implements OnInit {
   product;
   phone;
   selectedImage;
+  titles = ['General', 'Display Features', 'OS & Processor Features'];
+  objects = ['General', 'Display', 'Processor'];
+  keys = [];
 
   constructor(private productsService: ProductsService,
               private route: ActivatedRoute) {
@@ -25,6 +28,9 @@ export class ViewProductComponent implements OnInit {
       .subscribe((phone) => {
         this.phone = phone;
         this.selectedImage = this.phone.image_1;
+        this.keys.push(Object.keys(this.phone.General));
+        this.keys.push(Object.keys(this.phone.Display));
+        this.keys.push(Object.keys(this.phone.Processor));
       });
   }
 

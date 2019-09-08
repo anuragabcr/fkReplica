@@ -2,7 +2,7 @@
 <div class="card mb-3" style="max-width: 100%; border: none" *ngFor="let phone of phones">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="{{phone.image_1}}" [routerLink]="['/home',products,phone._id]" class="card-img img-size" alt="{{phone.name}}">
+            <img src="{{phone.image_1}}" [routerLink]="['/home',products,phone._id]"  alt="{{phone.name}}">
         </div>
         <div class="col-md-8">
             <div class="card-body">

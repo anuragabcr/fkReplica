@@ -1,8 +1,13 @@
 .img-size{
     width: 100px;
     height: 130px;
+    padding: 5px;
 }
 .pad{
     padding-left: 40px;
     padding-right: 40px;
+}
+.sectionBox{
+    padding: 30px;
+    border: 1px solid rgb(231, 222, 222);
 }
