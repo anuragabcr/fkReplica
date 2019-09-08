@@ -1,1 +1,14 @@
-<p>view-product works!</p>
+<div class="pad">
+<div class="row">
+    <div class="col-sm-1">
+        <img class="img-size" src="{{phone.image_1}}" (click)="selectedImage=phone.image_1" alt="{{phone.name}}">
+        <img class="img-size" src="{{phone.image_2}}" (click)="selectedImage=phone.image_2" alt="{{phone.name}}">
+    </div>
+    <div class="col-sm-3">
+        <img style="padding-left: 20px;" src="{{selectedImage}}" alt="{{phone.name}}">
+    </div>
+    <div class="col-sm-offset-1 col-sm-7">
+        <h4>{{phone.name}}</h4>
+        <h5>{{phone.price}}</h5>
+    </div>
+</div></div>

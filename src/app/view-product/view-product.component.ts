@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-view-product',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewProductComponent implements OnInit {
 
-  constructor() { }
+  id;
+  product;
+  phone;
+  selectedImage;
+
+  constructor(private productsService: ProductsService,
+              private route: ActivatedRoute) {
+    this.id = this.route.snapshot.params.id;
+    this.product = this.route.snapshot.params.products;
+   }
 
   ngOnInit() {
+    this.productsService.getPhone(this.product, this.id)
+      .subscribe((phone) => {
+        this.phone = phone;
+        this.selectedImage = this.phone.image_1;
+      });
   }
 
 }

@@ -13,4 +13,8 @@ export class ProductsService {
   getPhones(product) {
     return this.http.get(this.url + 'home/' + product);
   }
+
+  getPhone(product, id) {
+    return this.http.get(this.url + 'home/' + product + '/' + id);
+  }
 }
