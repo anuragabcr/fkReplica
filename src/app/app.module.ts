@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { IndexService } from './services/index.service';
 import { ProductsService } from './services/products.service';
+import { AuthService } from './services/auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +41,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
   ],
   providers: [
     IndexService,
-    ProductsService
+    ProductsService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

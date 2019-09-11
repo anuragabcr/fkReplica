@@ -6,15 +6,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductsService {
 
-  url = 'http://localhost:3000/';
+  url = 'http://localhost:3000/home/';
 
   constructor(private http: HttpClient) { }
 
   getPhones(product) {
-    return this.http.get(this.url + 'home/' + product);
+    return this.http.get(this.url + product);
   }
 
   getPhone(product, id) {
-    return this.http.get(this.url + 'home/' + product + '/' + id);
+    return this.http.get(this.url + product + '/' + id);
   }
 }
