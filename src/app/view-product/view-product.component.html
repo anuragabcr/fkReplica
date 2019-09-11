@@ -9,7 +9,7 @@
             <div class="btn-grroup mx-auto" style="padding-left: 100px;"><br>
                 <button class="btn btn-primary" (click)="snackBar()">Add to cart</button>&nbsp;&nbsp;
                 <div id="snackbar">Added to cart</div>
-                <button class="btn btn-success">Buy</button>
+                <button class="btn btn-success" [routerLink]="['/checkout']" routerLinkActive="router-link-active" >Buy</button>
             </div>
         </div>
         <div class="col-sm-7">
