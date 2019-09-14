@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
     this.indexService.getSlide()
       .subscribe(phone => {
         this.phones = phone;
+        console.log(phone);
       });
   }
 

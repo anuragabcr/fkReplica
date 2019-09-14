@@ -32,11 +32,7 @@ export class LoginComponent implements OnInit {
 
   loginSubmit() {
     console.log(this.loginForm.value);
-    this.authService.login(this.loginForm.value)
-      .subscribe(
-        data => console.log(data),
-        err => console.log(err)
-      );
+    this.authService.login(this.loginForm.value);
   }
 
   signupSubmit() {
