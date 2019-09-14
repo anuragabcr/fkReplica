@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginSelected = true;
   signupSelected = false;
+  loginData: any;
 
   loginForm = this.fb.group({
     loginEmail: ['', [Validators.required, Validators.email]],
@@ -31,8 +33,9 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit() {
-    console.log(this.loginForm.value);
-    this.authService.login(this.loginForm.value);
+    this.loginData = this.authService.login(this.loginForm.value);
+    console.log(this.loginData);
+    // $('#loginModal').modal('hide');
   }
 
   signupSubmit() {

@@ -40,13 +40,28 @@
                 </div>
             </li>
         </ul>
+        <button type="button" class="btn btn-outline-dark" *ngIf="loginStatus">Cart</button>&nbsp;
         <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
             <input class="form-control mr-sm-2" type="search" formControlName="search" placeholder="Search"
                 aria-label="Search">
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>&nbsp;
+        <div class="nav-item dropdown" *ngIf="loginStatus">
+            <button class="btn btn-outline-dark dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    User name
+            </button>
+                <div class="dropdown-menu" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Laptop</a>
+                    <hr>
+                    <a class="dropdown-item" href="#">Mac</a>
+                    <a class="dropdown-item" href="#">Pixel Bool</a>
+                    <a class="dropdown-item" href="#">MSI</a>
+                    <a class="dropdown-item" (click)="logoutUser()">Log Out</a>
+                </div>
+        </div>&nbsp;
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#loginModal">
+        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#loginModal" *ngIf="!loginStatus">
             Login
         </button>
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthService {
 
   token;
+
+  private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient) { }
 
@@ -16,15 +19,27 @@ export class AuthService {
   }
 
   login(userData) {
-    return this.http.post(this.url + 'auth', userData)
+    this.http.post(this.url + 'auth', userData)
       .subscribe(
-        data => this.token = data,
-        err => console.log(err)
+        data => {
+          this.token = data;
+          this.authStatusListener.next(true);
+          },
+        err => {console.log(err); }
         );
   }
 
   getToken() {
     return this.token;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
+  logout() {
+    this.token = null;
+    this.authStatusListener.next(false);
   }
 
 }

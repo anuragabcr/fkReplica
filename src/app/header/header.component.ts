@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,24 @@ import { FormControl, FormBuilder, Validators } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
 
+  loginStatus;
+
   searchForm = this.fb.group({
     search: ['', [Validators.required]]
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.loginStatus = isAuthenticated;
+      });
+  }
+
+  logoutUser() {
+    this.authService.logout();
   }
 
 }
