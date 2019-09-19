@@ -40,7 +40,7 @@
                 </div>
             </li>
         </ul>
-        <button type="button" class="btn btn-outline-dark" *ngIf="loginStatus">Cart</button>&nbsp;
+        <button type="button" class="btn btn-outline-dark" [routerLink]="['/viewcart']" *ngIf="loginStatus">Cart</button>&nbsp;
         <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
             <input class="form-control mr-sm-2" type="search" formControlName="search" placeholder="Search"
                 aria-label="Search">
@@ -54,10 +54,10 @@
                 <div class="dropdown-menu" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">Laptop</a>
                     <hr>
-                    <a class="dropdown-item" href="#">Mac</a>
-                    <a class="dropdown-item" href="#">Pixel Bool</a>
-                    <a class="dropdown-item" href="#">MSI</a>
-                    <a class="dropdown-item" (click)="logoutUser()">Log Out</a>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" [routerLink]="['/checkout']" >Check Out</a>
+                    <a class="dropdown-item" href="#">Setting</a>
+                    <button class="dropdown-item btn" (click)="logoutUser()">Log Out</button>
                 </div>
         </div>&nbsp;
         <!-- Button trigger modal -->

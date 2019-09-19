@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './shared/auth.guard';
 
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
@@ -12,12 +13,13 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'home/:products', component: ProductsComponent },
   { path: 'home/:products/:id', component: ViewProductComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'viewcart', component: CartComponent }
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'viewcart', component: CartComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   loginSubmit() {
     this.loginData = this.authService.login(this.loginForm.value);
     console.log(this.loginData);
-    // $('#loginModal').modal('hide');
+    // this.modal().hide();
   }
 
   signupSubmit() {
