@@ -11,7 +11,10 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   putCart(phone) {
-    return this.http.post(this.url, phone);
+    return this.http.post(this.url, phone)
+      .subscribe((data) => {
+        console.log(data);
+    });
   }
 
   getCart() {

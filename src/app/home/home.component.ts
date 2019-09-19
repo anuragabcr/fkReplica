@@ -30,9 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(phone) {
-    console.log('add to cart');
-    this.cartService.putCart(phone)
-      .subscribe((data) => console.log(data));
+    this.cartService.putCart(phone);
   }
 
 }

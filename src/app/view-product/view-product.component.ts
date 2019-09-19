@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../services/products.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-view-product',
@@ -18,7 +19,8 @@ export class ViewProductComponent implements OnInit {
   keys = [];
 
   constructor(private productsService: ProductsService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private cartService: CartService) {
     this.id = this.route.snapshot.params.id;
     this.product = this.route.snapshot.params.products;
    }
@@ -32,6 +34,10 @@ export class ViewProductComponent implements OnInit {
         this.keys.push(Object.keys(this.phone.Display));
         this.keys.push(Object.keys(this.phone.Processor));
       });
+  }
+
+  addToCart(phone) {
+    this.cartService.putCart(phone);
   }
 
   snackBar() {

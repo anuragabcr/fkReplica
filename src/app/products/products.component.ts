@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsService } from '../services/products.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -13,13 +14,18 @@ export class ProductsComponent implements OnInit {
   phones;
 
   constructor(private route: ActivatedRoute,
-              private productsService: ProductsService) {
+              private productsService: ProductsService,
+              private cartService: CartService) {
     this.products = this.route.snapshot.params.products;
    }
 
   ngOnInit() {
     this.productsService.getPhones(this.products)
     .subscribe((phone) => this.phones = phone);
+  }
+
+  addToCart(phone) {
+    this.cartService.putCart(phone);
   }
 
   snackBar() {
