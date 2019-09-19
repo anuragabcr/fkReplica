@@ -26,11 +26,22 @@ export class AuthService {
       .subscribe(
         data => {
           this.token = data;
+          this.saveAuthToken(this.token.token);
           this.isAuthenticated = true;
           this.authStatusListener.next(true);
           },
         err => {console.log(err); }
         );
+  }
+
+  autoAuthUser() {
+    const authInformation = this.getAuthToken();
+    if (!authInformation) {
+      return;
+    }
+    this.token = authInformation;
+    this.isAuthenticated = true;
+    this.authStatusListener.next(true);
   }
 
   getToken() {
@@ -49,7 +60,24 @@ export class AuthService {
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
+    this.clearAuthToken();
     this.route.navigate(['/']);
+  }
+
+  private saveAuthToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  private clearAuthToken() {
+    localStorage.removeItem('token');
+  }
+
+  private getAuthToken() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return;
+    }
+    return token;
   }
 
 }
