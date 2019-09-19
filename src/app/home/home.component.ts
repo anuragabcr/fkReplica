@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexService } from '../services/index.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ export class HomeComponent implements OnInit {
   phones;
   titles = ['Deal of the Day', 'Hot Deals', 'Top Selection'];
 
-  constructor(private indexService: IndexService) { }
+  constructor(private indexService: IndexService,
+              private cartService: CartService) { }
 
   ngOnInit() {
     this.indexService.getSlide()
@@ -25,6 +27,12 @@ export class HomeComponent implements OnInit {
     const x = document.getElementById('snackbar');
     x.className = 'show';
     setTimeout(() => { x.className = x.className.replace('show', ''); }, 3000);
+  }
+
+  addToCart(phone) {
+    console.log('add to cart');
+    this.cartService.putCart(phone)
+      .subscribe((data) => console.log(data));
   }
 
 }

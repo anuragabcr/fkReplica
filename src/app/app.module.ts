@@ -20,6 +20,7 @@ import { ProductsComponent } from './products/products.component';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     IndexService,
     ProductsService,
     AuthService,
+    CartService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

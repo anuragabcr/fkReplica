@@ -1,50 +1,26 @@
 <div class="container">
     <div class="accordion" id="accordionExample">
         <div class="card">
-            <div class="card-header" id="loginHead">
-                <h2 class="mb-0">
-                    <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#loginBody"
-                        aria-expanded="true" aria-controls="loginBody">
-                        LOGIN <span class="flex-spacer"></span> <i class="fa fa-chevron-down fa-lg"></i>
-                    </button>
-                </h2>
-            </div>
-
-            <div id="loginBody" class="collapse show" aria-labelledby="loginHead" data-parent="#accordionExample">
-                <div class="card-body">
-                    <form class="form-group" novalidate [formGroup]="loginForm" (ngSubmit)="loginFormSubmit()">
-                        <label for="loginId">Email ID </label>
-                        <input type="email" class="form-control" id="loginId" formControlName="loginId"
-                            placeholder="Enter Email ID or User ID">
-                        <label for="loginPassword">Password </label>
-                        <input type="password" class="form-control" id="loginPassword" formControlName="loginPassword"
-                            placeholder="Enter Password">
-                        <button class="btn btn-primary" style="margin-top: 20px; margin-left:45%;"
-                            [disabled]="!loginForm.valid">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="card">
             <div class="card-header" id="deliveryHead">
                 <h2 class="mb-0">
-                    <button class="btn btn-secondary collapsed" type="button" data-toggle="collapse"
-                        data-target="#deliveryBody" aria-expanded="false" aria-controls="deliveryBody">
-                        DELIVERY ADDRESS <span class="flex-spacer"></span> <i class="fa fa-chevron-down fa-lg"></i>
+                    <button class="btn btn-secondary" type="button" data-toggle="collapse"
+                        data-target="#deliveryBody" aria-expanded="true" aria-controls="deliveryBody">
+                        DELIVERY ADDRESS &nbsp;<i class="fa fa-chevron-down fa-lg"></i>
                     </button>
                 </h2>
             </div>
-            <div id="deliveryBody" class="collapse" aria-labelledby="deliveryHead" data-parent="#accordionExample">
+            <div id="deliveryBody" class="collapse show" aria-labelledby="deliveryHead" data-parent="#accordionExample">
                 <div class="card-body">
                     <form [formGroup]="deliveryForm" (ngSubmit)="deliveryFormSubmit()">
                         <div class="form-group">
                             <label for="deliveryAddress">Address</label>
-                            <input type="text" class="form-control" id="deliveryAddress" formControlName="deliveryAddress" placeholder="1234 Main St">
+                            <input type="text" class="form-control" id="deliveryAddress"
+                                formControlName="deliveryAddress" placeholder="1234 Main St">
                         </div>
                         <div class="form-group">
                             <label for="deliveryAddress2">Address 2</label>
-                            <input type="text" class="form-control" id="deliveryAddress2" formControlName="deliveryAddress2"
-                                placeholder="Apartment, studio, or floor">
+                            <input type="text" class="form-control" id="deliveryAddress2"
+                                formControlName="deliveryAddress2" placeholder="Apartment, studio, or floor">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -53,40 +29,33 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="deliveryState">State</label>
-                                <input type="text" id="deliveryState" formControlName="deliveryState" class="form-control">
+                                <input type="text" id="deliveryState" formControlName="deliveryState"
+                                    class="form-control">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="deliveryZip">Zip</label>
-                                <input type="number" class="form-control" id="deliveryZip" formControlName="deliveryZip">
+                                <input type="number" class="form-control" id="deliveryZip"
+                                    formControlName="deliveryZip">
                             </div>
                         </div>
                         <button class="btn btn-primary" style="margin-top: 20px; margin-left:45%;"
-                        [disabled]="!deliveryForm.valid">Deliver Here</button>
+                            [disabled]="!deliveryForm.valid">Deliver Here</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="card">
-            <div class="card-header" id="headingThree">
+            <div class="card-header" id="cartHead">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Collapsible Group Item #3
+                    <button class="btn btn-secondary collapsed" type="button" data-toggle="collapse" data-target="#cartBody"
+                        aria-expanded="false" aria-controls="cartBody">
+                        Selected Item &nbsp;<i class="fa fa-chevron-down fa-lg"></i>
                     </button>
                 </h2>
             </div>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div id="cartBody" class="collapse" aria-labelledby="cartHead" data-parent="#accordionExample">
                 <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                    wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                    eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                    ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                    denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    <app-cart></app-cart>
                 </div>
             </div>
         </div>
