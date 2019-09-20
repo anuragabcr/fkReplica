@@ -9,12 +9,17 @@ import { CartService } from '../services/cart.service';
 export class CartComponent implements OnInit {
 
   phones;
+  grandTotal = 0;
+
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
     this.cartService.getCart()
       .subscribe((data) => {
         this.phones = data;
+        for (const i of this.phones) {
+          this.grandTotal += i.quantity * i.price;
+        }
       });
   }
 
