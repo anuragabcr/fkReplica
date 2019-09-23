@@ -25,4 +25,8 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
   }
 
+  deliveryFormSubmit() {
+    console.log(this.deliveryForm.value);
+  }
+
 }
