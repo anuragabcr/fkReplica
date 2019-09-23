@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(phone) {
-    this.cartService.putCart(phone);
+    this.cartService.postCart(phone);
   }
 
 }

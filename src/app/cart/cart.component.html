@@ -1,5 +1,5 @@
 <div class="container" style="text-align: center;">
-    <h3 ><i>Selected Items</i></h3>
+    <h3><i>Selected Items</i></h3>
     <table class="table">
         <tr>
             <th>Description</th>
@@ -8,12 +8,14 @@
             <th>Total</th>
             <th>Remove</th>
         </tr>
-        <tr  *ngFor="let item of phones">
-            <td><a [routerLink]="['/home',item.brand,item._id]" >{{item.name}}</a></td>
-            <td>{{item.quantity}}</td>
+        <tr *ngFor="let item of phones; let i = index">
+            <td><a [routerLink]="['/home',item.brand,item._id]">{{item.name}}</a></td>
+            <td><i class="fa fa-minus fa-lg" (click)="updateQuantity(-1, item._id, item.quantity)"></i>
+                &nbsp;<strong>{{item.quantity}}</strong> &nbsp;<i class="fa fa-plus fa-lg"
+                    (click)="updateQuantity(1, item._id, item.quantity)"></i></td>
             <td>{{item.price}}</td>
             <td>{{item.quantity * item.price}}</td>
-            <td ><i class="fa fa-trash fa-lg"></i></td>
+            <td><i class="fa fa-trash fa-lg" (click)="removeItem(item._id)"></i></td>
         </tr>
         <tr>
             <th colspan="3" style="text-align: center;">Grand Total</th>

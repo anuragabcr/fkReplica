@@ -10,7 +10,7 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  putCart(phone) {
+  postCart(phone) {
     return this.http.post(this.url, phone)
       .subscribe((data) => {
         console.log(data);
@@ -19,5 +19,13 @@ export class CartService {
 
   getCart() {
     return this.http.get(this.url);
+  }
+
+  putCart(details) {
+    return this.http.put(this.url, details);
+  }
+
+  deleteCart(id) {
+    return this.http.delete(this.url + '/' + id);
   }
 }
