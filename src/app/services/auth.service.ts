@@ -64,6 +64,10 @@ export class AuthService {
     this.route.navigate(['/']);
   }
 
+  getUserName() {
+    return this.http.get(`${this.url}users/name`);
+  }
+
   private saveAuthToken(token: string) {
     localStorage.setItem('token', token);
   }

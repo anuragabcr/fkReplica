@@ -40,7 +40,8 @@
                 </div>
             </li>
         </ul>
-        <button type="button" class="btn btn-outline-dark" [routerLink]="['/viewcart']" *ngIf="loginStatus">Cart</button>&nbsp;
+        <button type="button" class="btn btn-outline-dark" [routerLink]="['/viewcart']" *ngIf="loginStatus">Cart &nbsp;<span
+                class="badge badge-light">{{cartSize}}</span></button>&nbsp;
         <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
             <input class="form-control mr-sm-2" type="search" formControlName="search" placeholder="Search"
                 aria-label="Search">
@@ -48,20 +49,21 @@
         </form>&nbsp;
         <div class="nav-item dropdown" *ngIf="loginStatus">
             <button class="btn btn-outline-dark dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    User name
+                aria-haspopup="true" aria-expanded="false">
+                {{userName.name}}
             </button>
-                <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Laptop</a>
-                    <hr>
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" [routerLink]="['/checkout']" >Check Out</a>
-                    <a class="dropdown-item" href="#">Setting</a>
-                    <button class="dropdown-item btn" (click)="logoutUser()">Log Out</button>
-                </div>
+            <div class="dropdown-menu" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">{{userName.name}}</a>
+                <hr>
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" [routerLink]="['/checkout']">Check Out</a>
+                <a class="dropdown-item" href="#">Setting</a>
+                <button class="dropdown-item btn" (click)="logoutUser()">Log Out</button>
+            </div>
         </div>&nbsp;
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#loginModal" *ngIf="!loginStatus">
+        <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#loginModal"
+            *ngIf="!loginStatus">
             Login
         </button>
 

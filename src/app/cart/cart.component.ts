@@ -50,6 +50,7 @@ export class CartComponent implements OnInit {
           total += i.quantity * i.price;
         }
         this.grandTotal = total;
+        this.cartService.getCartSize();
       });
   }
 
