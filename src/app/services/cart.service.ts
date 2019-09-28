@@ -17,7 +17,8 @@ export class CartService {
     return this.http.post(this.url, phone)
       .subscribe((data) => {
         console.log(data);
-        this.getCartSize();
+        const temp = Object.keys(data).length;
+        this.cartItemListener.next(temp);
     });
   }
 
@@ -38,6 +39,7 @@ export class CartService {
       .subscribe((data) => {
         const temp = Object.keys(data).length;
         this.cartItemListener.next(temp);
+        console.log(temp);
       });
     return this.cartItemListener.asObservable();
   }
