@@ -40,8 +40,8 @@
                 </div>
             </li>
         </ul>
-        <button type="button" class="btn btn-outline-dark" [routerLink]="['/viewcart']" *ngIf="loginStatus">Cart &nbsp;<span
-                class="badge badge-light">{{cartSize}}</span></button>&nbsp;
+        <button type="button" class="btn btn-outline-dark" [routerLink]="['/viewcart']" *ngIf="loginStatus">Cart
+            &nbsp;<span class="badge badge-light">{{cartSize}}</span></button>&nbsp;
         <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm">
             <input class="form-control mr-sm-2" type="search" formControlName="search" placeholder="Search"
                 aria-label="Search">

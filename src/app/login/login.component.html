@@ -1,49 +1,115 @@
 <div class="card formSpace">
-<table style="width: 100%">
-    <tr align="center">
-        <th [class.notSelected]="signupSelected" (click)="loginSelected=true;signupSelected=false">Login</th>
-        <th [class.notSelected]="loginSelected" (click)="loginSelected=false;signupSelected=true">Sign Up</th>
-    </tr>
-</table>
+    <table style="width: 100%">
+        <tr align="center">
+            <th [class.notSelected]="signupSelected" (click)="loginSelected=true;signupSelected=false">Login</th>
+            <th [class.notSelected]="loginSelected" (click)="loginSelected=false;signupSelected=true">Sign Up</th>
+        </tr>
+    </table>
 
-<div *ngIf="loginSelected">
-    <form novalidate [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
-        <div class="form-group">
-            <label for="loginEmail">Email address</label>
-            <input type="email" class="form-control" id="loginEmail" formControlName="loginEmail" placeholder="Enter email">
-        </div>
-        <div class="form-group">
-            <label for="loginPassword">Password</label>
-            <input type="password" class="form-control" id="loginPassword" formControlName="loginPassword" placeholder="Password">
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
-        </div>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp;
-        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
-    </form>
-</div>
-<div *ngIf="signupSelected" class="formSpace">
-    <form novalidate [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
-        <div class="form-group">
-            <label for="signupName">Full Name </label>
-            <input type="text" id="signupName" class="form-control" formControlName="signupName" placeholder="Enter full name">
-        </div>
-        <div class="form-group">
-            <label for="signupEmail">Email Address </label>
-            <input type="email" class="form-control" id="signupEmail" formControlName="signupEmail" placeholder="Enter email address">
-        </div>
-        <div class="form-group">
-            <label for="signupNumber">Phone No. </label>
-            <input type="number" class="form-control" id="signupNumber" formControlName="signupNumber" placeholder="Enter Phone No.">
-        </div>
-        <div class="form-group">
-            <label for="signupPassword">Password </label>
-            <input type="password" class="form-control" id="signupPassword" formControlName="signupPassword" placeholder="Enter Password">
-        </div>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp;
-        <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
-    </form>
-</div>
+    <div *ngIf="loginSelected">
+        <form novalidate [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+            <div class="form-group">
+                <label for="loginEmail">Email address</label>
+                <input type="email" class="form-control" id="loginEmail" formControlName="loginEmail"
+                    placeholder="Enter email">
+                <div *ngIf="loginForm.get('loginEmail').touched">
+                    <span *ngIf="loginForm.get('loginEmail').hasError('required')" class="alert alert-danger">
+                        Email is required
+                    </span>
+                    <span *ngIf="loginForm.get('loginEmail').hasError('email')" class="alert alert-danger">
+                        not a valid Email
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" class="form-control" id="loginPassword" formControlName="loginPassword"
+                    placeholder="Password">
+                <div *ngIf="loginForm.get('loginPassword').touched">
+                    <span *ngIf="loginForm.get('loginPassword').hasError('required')" class="alert alert-danger">
+                        Password is required
+                    </span>
+                    <span *ngIf="loginForm.get('loginPassword').hasError('minlength')" class="alert alert-danger">
+                        min lenght is 8
+                    </span>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp;
+            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+            <div *ngIf="!isAuthenticated && loginClicked" class="alert alert-danger">
+                Email ID or Password is incorrect
+            </div>
+            <div *ngIf="isAuthenticated && loginClicked" class="alert alert-success">
+                Logged in... close the modal.....
+            </div>
+        </form>
+    </div>
+    <div *ngIf="signupSelected" class="formSpace">
+        <form novalidate [formGroup]="signupForm" (ngSubmit)="signupSubmit()">
+            <div class="form-group">
+                <label for="signupName">Full Name </label>
+                <input type="text" id="signupName" class="form-control" formControlName="signupName"
+                    placeholder="Enter full name">
+                <div *ngIf="signupForm.get('signupName').touched">
+                    <span *ngIf="signupForm.get('signupName').hasError('required')" class="alert alert-danger">
+                        Name is required
+                    </span>
+                    <span *ngIf="signupForm.get('signupName').hasError('minlength')" class="alert alert-danger">
+                        must be atleast 4 digits long
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signupEmail">Email Address </label>
+                <input type="email" class="form-control" id="signupEmail" formControlName="signupEmail"
+                    placeholder="Enter email address">
+                <div *ngIf="signupForm.get('signupEmail').touched">
+                    <span *ngIf="signupForm.get('signupEmail').hasError('required')" class="alert alert-danger">
+                        Email is required
+                    </span>
+                    <span *ngIf="signupForm.get('signupEmail').hasError('email')" class="alert alert-danger">
+                        Not a valid Email
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signupNumber">Phone No. </label>
+                <input type="number" class="form-control" id="signupNumber" formControlName="signupNumber"
+                    placeholder="Enter Phone No.">
+                <div *ngIf="signupForm.get('signupNumber').touched">
+                    <span *ngIf="signupForm.get('signupNumber').hasError('required')" class="alert alert-danger">
+                        Number is required
+                    </span>
+                    <span *ngIf="signupForm.get('signupNumber').hasError('minlength')" class="alert alert-danger">
+                        number must be greater than 10 digits
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signupPassword">Password </label>
+                <input type="password" class="form-control" id="signupPassword" formControlName="signupPassword"
+                    placeholder="Enter Password">
+                <div *ngIf="signupForm.get('signupPassword').touched">
+                    <span *ngIf="signupForm.get('signupPassword').hasError('required')" class="alert alert-danger">
+                        Password is required
+                    </span>
+                    <span *ngIf="signupForm.get('signupPassword').hasError('minlength')" class="alert alert-danger">
+                        password must be atleast 8 digit long 
+                    </span>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&nbsp;
+            <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Sign Up</button>
+            <div *ngIf="signupClicked && signupError" class="alert alert-danger">
+                {{signupError.error}}
+            </div>
+            <div *ngIf="signupClicked && signupData" class="alert alert-success">
+                You have registered successfully... <br> you can login now...
+            </div>
+        </form>
+    </div>
 </div>

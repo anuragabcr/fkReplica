@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(isAuthenticated => {
         this.loginStatus = isAuthenticated;
       });
-    this.userName = this.authService.getUserName()
+    this.authService.getUserName()
       .subscribe(name => {
         console.log(name);
         this.userName = name;

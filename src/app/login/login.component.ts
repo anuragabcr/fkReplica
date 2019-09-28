@@ -10,9 +10,11 @@ import { $ } from 'protractor';
 })
 export class LoginComponent implements OnInit {
 
-  loginSelected = true;
-  signupSelected = false;
-  loginData: any;
+  loginSelected = true; signupSelected = false;
+  loginData: any; signupData;
+  loginClicked = false; signupClicked = false;
+  signupError;
+  isAuthenticated;
 
   loginForm = this.fb.group({
     loginEmail: ['', [Validators.required, Validators.email]],
@@ -22,8 +24,8 @@ export class LoginComponent implements OnInit {
   signupForm = this.fb.group({
     signupName: ['', [Validators.required, Validators.minLength(4)]],
     signupEmail: ['', [Validators.required, Validators.email]],
-    signupNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
-    signupPassword: ['', [Validators.required, Validators.minLength(10)]]
+    signupNumber: ['', [Validators.required, Validators.minLength(10)]],
+    signupPassword: ['', [Validators.required, Validators.minLength(8)]]
   });
 
   constructor(private fb: FormBuilder,
@@ -33,17 +35,31 @@ export class LoginComponent implements OnInit {
   }
 
   loginSubmit() {
-    this.loginData = this.authService.login(this.loginForm.value);
-    console.log(this.loginData);
-    // this.modal().hide();
+    this.authService.login(this.loginForm.value);
+    this.loginClicked = true;
+    this.authService.getAuthStatusListener()
+      .subscribe((auth) => {
+        this.isAuthenticated = auth;
+      });
+    // $('#modal').modal('hide');
   }
 
   signupSubmit() {
-    console.log(this.signupForm.value);
+    this.signupClicked = true;
     this.authService.signup(this.signupForm.value)
       .subscribe(
-        (data) => console.log(data),
-        (error) => console.log(error)
+        (data) => {
+          console.log(data);
+          this.signupData = data;
+          this.signupError = null;
+          this.signupForm.reset();
+        },
+        (error) => {
+          const temp = error;
+          this.signupError = temp.error;
+          console.log(temp.error);
+          this.signupData = null;
+        }
       );
   }
 
