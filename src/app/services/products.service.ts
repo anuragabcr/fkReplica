@@ -8,7 +8,7 @@ import { config } from 'rxjs';
 })
 export class ProductsService {
 
-  url = 'http://localhost:3000/home/';
+  url = 'http://fkreplica-env.8kbsbgaecu.us-east-2.elasticbeanstalk.com/home/';
 
   constructor(private http: HttpClient,
               private authService: AuthService) { }

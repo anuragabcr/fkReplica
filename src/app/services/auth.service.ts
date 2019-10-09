@@ -16,7 +16,7 @@ export class AuthService {
   constructor(private http: HttpClient,
               private route: Router) { }
 
-  url = 'http://localhost:3000/';
+  url = 'http://fkreplica-env.8kbsbgaecu.us-east-2.elasticbeanstalk.com/';
   signup(userData) {
     return this.http.post(this.url + 'users', userData);
   }

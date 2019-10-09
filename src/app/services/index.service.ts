@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class IndexService {
 
-  url = 'http://localhost:3000/';
+  url = 'http://fkreplica-env.8kbsbgaecu.us-east-2.elasticbeanstalk.com/';
 
   constructor(private http: HttpClient) { }
 

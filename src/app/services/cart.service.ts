@@ -9,7 +9,7 @@ export class CartService {
 
   private cartItemListener = new Subject<number>();
 
-  url = 'http://localhost:3000/cart';
+  url = 'http://fkreplica-env.8kbsbgaecu.us-east-2.elasticbeanstalk.com/cart';
 
   constructor(private http: HttpClient) { }
 
